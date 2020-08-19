@@ -1,12 +1,12 @@
 
-
+import alpaca_trade_api as tradeapi 
 api = tradeapi.REST(
         ALPACA_API_KEY,
         ALPACA_SECRET_KEY,
         'https://paper-api.alpaca.markets', api_version='v2'
     )
 
-def place_market_order(ticker,qty, side, order_type, time_in_force)
+def place_market_order(ticker,qty, side, order_type, time_in_force):
     # Place a market order to buy qty of number of shares 
     api.submit_order(
         symbol=ticker,
@@ -16,7 +16,7 @@ def place_market_order(ticker,qty, side, order_type, time_in_force)
         time_in_force=time_in_force, #define time in force: 'gtc'=,'opg'=opening
     )
 
- def place_limit_order(ticker,qty, side, order_type, time_in_force,limit_price)   
+ def place_limit_order(ticker,qty, side, order_type, time_in_force,limit_price):  
     api.submit_order(
         symbol=ticker,
         qty=qty,
