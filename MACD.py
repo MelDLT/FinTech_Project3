@@ -25,9 +25,27 @@ class MACDSimulator():
     def _calculate_macd_signals(self):
         self.stock_data_df['MACD Signal'] = None
 
-        self.stock_data_df["MACD Short"] = np.where(self.stock_data_df['macd'] > self.stock_data_df['exp3'], 1.0, 0.0)
-        self.stock_data_df["MACD Long"] = np.where(self.stock_data_df['macd'] < self.stock_data_df['exp3'], -1.0, 0.0)
-        self.stock_data_df["MACD Signal"] = self.stock_data_df["MACD Short"] + self.stock_data_df["MACD Long"]
+        mode = 'Open'
+        for index in range(len(self.stock_data_df)):
+            if index == 0:
+                continue
+
+            row = self.stock_data_df.iloc[index]
+            prev_row = self.stock_data_df.iloc[index - 1]
+
+            # open?
+            if mode == 'Open' and row['macd'] > row['macdout']  and prev_row['macd'] < prev_row['macdout']:
+                self.stock_data_df.iloc[index, self.stock_data_df.columns.get_loc('MACD Signal')] = 1
+                mode = 'Close'
+
+            # close?
+            if mode == 'Close' and row['macd'] < row['macdout'] and prev_row['macd'] > prev_row['macdout']:
+                self.stock_data_df.iloc[index, self.stock_data_df.columns.get_loc('MACD Signal')] = -1
+                mode = 'Open'
+
+        #self.stock_data_df["MACD Signal"] = np.where(self.stock_data_df['macd'] > self.stock_data_df['macdout'], 1.0, 0.0)
+        #self.stock_data_df["MACD Signal"] = np.where(self.stock_data_df['macd'] < self.stock_data_df['macdout'], -1.0, 0.0)
+        #self.stock_data_df["MACD Signal"] = self.stock_data_df["MACD Short"] + self.stock_data_df["MACD Long"]
 
     def _returns(self):
         self.stock_data_df['MACD Signal'].fillna(method='ffill', inplace=True)
