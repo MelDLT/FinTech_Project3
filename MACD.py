@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd
 import os
@@ -24,8 +25,9 @@ class MACDSimulator():
     def _calculate_macd_signals(self):
         self.stock_data_df['MACD Signal'] = None
 
-        self.stock_data_df["MACD Signal"] = np.where(self.stock_data_df['macd'] > self.stock_data_df['macdout'], 1.0, 0.0)
-        self.stock_data_df["MACD Entry/Exit"] = self.stock_data_df["MACD Signal"].diff()
+        self.stock_data_df["MACD Short"] = np.where(self.stock_data_df['macd'] > self.stock_data_df['exp3'], 1.0, 0.0)
+        self.stock_data_df["MACD Long"] = np.where(self.stock_data_df['macd'] < self.stock_data_df['exp3'], -1.0, 0.0)
+        self.stock_data_df["MACD Signal"] = self.stock_data_df["MACD Short"] + self.stock_data_df["MACD Long"]
 
     def _returns(self):
         self.stock_data_df['MACD Signal'].fillna(method='ffill', inplace=True)
