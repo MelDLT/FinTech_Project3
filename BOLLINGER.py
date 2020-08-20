@@ -1,3 +1,8 @@
+
+import numpy as np
+import pandas as pd
+import os
+from pandas import DataFrame
 #Bollinger Bands Simulator to assess the asset and choose ideal, optimized bollinger window, no of standard deviations, and period.
 class BollingerBandsSimulator:
 

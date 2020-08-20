@@ -1,4 +1,7 @@
 import numpy as np
+import pandas as pd
+import os
+from pandas import DataFrame
 #EMA Simulator to assess the asset and choose ideal, optimized short and long windows
 class EMASimulator:
     def __init__(self, stock_data_df, period, long_window, short_window, figsize=None):

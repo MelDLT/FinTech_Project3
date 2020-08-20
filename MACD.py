@@ -1,4 +1,7 @@
 import numpy as np
+import pandas as pd
+import os
+from pandas import DataFrame
 #MACD Simulator
 class MACDSimulator():
     def __init__(self, stock_data_df, period, span1, span2, span3, figsize = None):

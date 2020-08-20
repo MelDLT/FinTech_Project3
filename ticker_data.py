@@ -1,3 +1,19 @@
+import pandas as pd
+import alpaca_trade_api as tradeapi
+from dotenv import load_dotenv
+import os
+from pandas import DataFrame
+
+## Get Market Data for S&P500 
+#engage API keys by activating .env file for Alpaca Api
+load_dotenv()
+alpaca_api_key = os.getenv("ALPACA_API_KEY")
+alpaca_secret_key = os.getenv("ALPACA_SECRET_KEY")
+alpaca_base_url=os.getenv("APCA_API_BASE_URL")
+api = tradeapi.REST(alpaca_api_key, alpaca_secret_key,alpaca_base_url, api_version='v2')
+
+
+
 #function to read the api data for stock ticker
 #returns dataframe of closing price and daily returns for a given ticker symbol
 def get_ticker_data(api,ticker):
