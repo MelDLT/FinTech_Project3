@@ -54,7 +54,7 @@ def get_crypto_data (exchange, ticker):
 )
     
 
-    historical_prices_df.set_index("date", inplace= True)
+    historical_prices_df.set_index("Date", inplace= True)
     
 
 #, infer_datetime_format=True, parse_dates=True, inplace=True, ascending=True)

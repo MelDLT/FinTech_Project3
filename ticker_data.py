@@ -18,7 +18,7 @@ api = tradeapi.REST(alpaca_api_key, alpaca_secret_key,alpaca_base_url, api_versi
 #returns dataframe of closing price and daily returns for a given ticker symbol
 def get_ticker_data(api,ticker):
     #load in historical data for provided ticker
-    stock_data_df = api.alpha_vantage.historic_quotes(ticker, adjusted=True, output_format='pandas')
+    stock_data_df = api.alpha_vantage.historic_quotes(ticker, adjusted=True, output_format='pandas',outputsize='compact')
 
     #Clean Data
     
