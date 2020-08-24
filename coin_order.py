@@ -9,7 +9,8 @@ load_dotenv()
 
 kraken = ccxt.kraken({
     'apiKey': os.getenv('KRAKEN_PUBLIC_KEY'),
-    'secret': os.getenv('KRAKEN_SECRET_KEY'),
+    'secret': os.getenv('KRAKEN_SECRET_KEY')
+    #'url': os.getenv('KRAKEN_API_URL')
 })
 
 
