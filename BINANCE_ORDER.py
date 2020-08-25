@@ -27,7 +27,7 @@ print(client.get_account())
 
 # %%
 #priting my balance on binance for Trx,
-print(client.get_asset_balance(asset='TRX'))
+print(client.get_asset_balance(asset='XRP'))
 
 
 # %%
@@ -41,7 +41,7 @@ print(btc_price)
 #since i dont have enough funds we get this error, but it is actually connecting to my binance account
 def binance_buy_order(symbol)
     order = client.create_order(  #create_test_order
-        symbol='BNBBTC',
+        symbol='XRPETH',
         side=Client.SIDE_BUY,
         type=Client.ORDER_TYPE_MARKET,
         quantity=1)
@@ -53,5 +53,15 @@ prices = client.get_all_tickers()
 
 # %%
 
+def binance_buy_order(symbol)
+    order = client.create_order(  #create_test_order
+        symbol='XRPETH',
+        side=Client.SIDE_SELL,
+        type=Client.ORDER_TYPE_MARKET,
+        quantity=1)
+
+# get all symbol prices
+
+prices = client.get_all_tickers()
 
 
