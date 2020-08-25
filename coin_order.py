@@ -45,12 +45,12 @@ def sell_kraken(symbol):
 
    kraken.create_market_sell_order(symbol, 1)
 
-def buy_coin_order(symbol):
+#def buy_coin_order(symbol):
 
     #BINANCE BUY ORDER
 
 
-def sell_coin_order(symbol):
+#def sell_coin_order(symbol):
 
    #BINANCE SELL ORDER
 
