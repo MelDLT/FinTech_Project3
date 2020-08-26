@@ -1,4 +1,5 @@
-from main.py import *
+
+from main_test.py import *
 while True:
     
-    make_trades()
+    main_test.py(stock_ticker,crypto_ticker)
